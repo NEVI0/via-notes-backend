@@ -59,6 +59,92 @@ export default class Note {
 		});
 	}
 
+	public insert(id_user: number | string, description: string): Promise<void> {
+		return new Promise((resolve, reject) => {
+			try {
+
+				description = description.replace('"', ' ');
+
+				const query = `
+					INSERT INTO tb_note (
+						description, id_user
+					) VALUES (
+						"${description}", "${id_user}"
+					)
+				`;
+
+				this.conn.query(query, err => {
+					if (err) {
+						this.endConnection(false);
+						return reject({ type: 'Erro de execução de query', err });
+					}
+
+					this.endConnection(true);
+					return resolve();
+				});
+
+			} catch (err) {
+				this.endConnection(false);
+				return reject({ type: 'Error conexão com o banco de dados!', err });
+			}			
+		});
+	}
+
+	public update(id_note: number | string, id_status: number | string, description: string): Promise<void> {
+		return new Promise((resolve, reject) => {
+			try {
+
+				const query = `
+					UPDATE
+					  tb_note
+					SET
+					  description = "${description}",
+					  fk_id_status = ${id_status}
+					WHERE
+					  id_note = ${id_note}
+					LIMIT 1
+				`;
+
+				this.conn.query(query, err => {
+					if (err) {
+						this.endConnection(false);
+						return reject({ type: 'Erro de execução de query', err });
+					}
+
+					this.endConnection(true);
+					return resolve();
+				});
+
+			} catch (err) {
+				this.endConnection(false);
+				return reject({ type: 'Error conexão com o banco de dados!', err });
+			}			
+		});
+	}
+
+	public delete(id_note: number | string): Promise<void> {
+		return new Promise((resolve, reject) => {
+			try {
+
+				const query = `DELETE FROM tb_note WHERE id_note = ${id_note} LIMIT 1`;
+
+				this.conn.query(query, err => {
+					if (err) {
+						this.endConnection(false);
+						return reject({ type: 'Erro de execução de query', err });
+					}
+
+					this.endConnection(true);
+					return resolve();
+				});
+
+			} catch (err) {
+				this.endConnection(false);
+				return reject({ type: 'Error conexão com o banco de dados!', err });
+			}			
+		});
+	}
+
 	private endConnection(hadSuccess: boolean): void {
 		if (hadSuccess) {
 			this.conn.commit();
