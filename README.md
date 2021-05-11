@@ -2,7 +2,7 @@
 
 Repositório criado com o propósito de mostrar minhas capacidades como desenvolvedor full-stack, utilizando o **[Node](https://nodejs.org/en/)** para a criação da API.
 
-### :zap: Como configurar o projeto
+### :wrench: Como configurar o projeto
 
 - Instale o **[Node](https://nodejs.org/en/download/)** na sua máquina e verifique a instalação pelo comando abaixo:
 ```
