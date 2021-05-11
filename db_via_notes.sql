@@ -16,3 +16,6 @@ CREATE TABLE tb_note (
   `id_user` VARCHAR(250) NOT NULL,
   `fk_id_status` INT NOT NULL
 );
+
+/* STATUS PADRÃO */
+INSERT INTO tb_status (`name`) VALUES ('A Fazer'), ('Importante'), ('Finalizado');
