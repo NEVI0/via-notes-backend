@@ -1,7 +1,7 @@
 import { Connection } from 'mysql';
 
 import Database from '../config/database';
-import { StatusType } from '../utils/interfaces';
+import { StatusType } from '../utils/types';
 
 export default class Note {
 
