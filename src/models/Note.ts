@@ -37,7 +37,7 @@ export default class Note {
 					`;
 				} else {
 					query += `
-						WHERE tb_n.id_user = ${id_user}
+						WHERE tb_n.id_user = "${id_user}"
 						ORDER BY tb_n.created_at DESC
 					`;
 				}
@@ -59,7 +59,7 @@ export default class Note {
 		});
 	}
 
-	public insert(id_user: number | string, description: string): Promise<void> {
+	public insert(id_user: number | string, id_status: number | string, description: string): Promise<void> {
 		return new Promise((resolve, reject) => {
 			try {
 
@@ -67,9 +67,9 @@ export default class Note {
 
 				const query = `
 					INSERT INTO tb_note (
-						description, id_user
+						description, id_user, fk_id_status
 					) VALUES (
-						"${description}", "${id_user}"
+						"${description}", "${id_user}", ${id_status}
 					)
 				`;
 
