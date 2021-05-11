@@ -6,14 +6,15 @@ export default class NoteController {
 	public async get(request: Request, response: Response) {
 		try {
 
-			const { id_user, id_note } = request.params;
+			const { id_user } = request.params;
+			const { id_note } = request.query;
 			
 			if (!id_user) {
 				return response.status(401).json({ message: 'O ID do usuário não foi informado!' });
 			}
 
 			const noteObj: Note = new Note();
-			const notes = await noteObj.get(id_user, id_note);
+			const notes = await noteObj.get(id_user, id_note.toString());
 
 			return response.status(200).json({ notes });
 
@@ -25,14 +26,14 @@ export default class NoteController {
 	public async insert(request: Request, response: Response) {
 		try {
 
-			const { id_user, description } = request.body;
+			const { id_user, id_status, description } = request.body;
 
 			if (!description) {
 				return response.status(401).json({ message: 'Informe a descrição da sua nota!' });
 			}
 
 			const noteObj: Note = new Note();
-			await noteObj.insert(id_user, description);
+			await noteObj.insert(id_user, id_status, description);
 
 			return response.status(200).json({ message: 'Sua nota foi criada com sucesso!' });
 
