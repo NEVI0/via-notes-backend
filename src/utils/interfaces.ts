@@ -1,3 +1,8 @@
+export interface StatusType {
+	id_status: number;
+	name: string;
+}
+
 export interface NoteType {
 	id_note: number;
 	description: string;
