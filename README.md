@@ -1,4 +1,4 @@
-### Via Notes Backend :green_book:
+### :green_book: Via Notes Backend
 
 Repositório criado com o propósito de mostrar minhas capacidades como desenvolvedor full-stack, utilizando o **[Node](https://nodejs.org/en/)** para a criação da API.
 
@@ -14,7 +14,7 @@ Repositório criado com o propósito de mostrar minhas capacidades como desenvol
 ~ git clone https://github.com/NEVI0/via-notes-backend.git
 ```
 
-- Instale o **[Yarn](https://classic.yarnpkg.com/en/docs/install/)** como gerenciado de pacotes ou utilize o **NPM**. Verifique a instalação pelo comando abaixo:
+- Instale o **[Yarn](https://classic.yarnpkg.com/en/docs/install/)** como gerenciador de pacotes ou utilize o **NPM**. Verifique a instalação pelo comando abaixo:
 ```
 ~ npm --version
 ou
