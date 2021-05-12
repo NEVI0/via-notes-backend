@@ -13,7 +13,7 @@ CREATE TABLE tb_note (
   `id_note` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `description` TEXT NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `id_user` VARCHAR(250) NOT NULL,
+  `id_user` INT NOT NULL,
   `fk_id_status` INT NOT NULL
 );
 
