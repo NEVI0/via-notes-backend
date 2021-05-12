@@ -17,14 +17,18 @@ Repositório criado com o propósito de mostrar minhas capacidades como desenvol
 - Instale o **[Yarn](https://classic.yarnpkg.com/en/docs/install/)** como gerenciador de pacotes ou utilize o **NPM**. Verifique a instalação pelo comando abaixo:
 ```
 ~ npm --version
+
 ou
+
 ~ yarn --version
 ```
 
 - Na raíz do projeto `/via-notes-backend`, instale as dependências necessárias pelo comando abaixo:
 ```
 ~ npm install
+
 ou
+
 ~ yarn install
 ```
 
@@ -47,34 +51,25 @@ DB_PORT=3306
 
 - Substitua as informações de autenticação pelas a do seu banco de dados;
 
-### :red_car: Como rodar o projeto
+### :zap: Como rodar o projeto
 
 - Comando para rodar em **modo de desenvolvimento**:
 ```
 ~ npm start
+
 ou
+
 ~ yarn start
 ```
 
 - Comando para gerar o **build de produção**:
 ```
 ~ npm run build
+
 ou
+
 ~ yarn build
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### :page_with_curl: Informações
 
