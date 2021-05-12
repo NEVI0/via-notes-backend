@@ -12,7 +12,7 @@ export default class Note {
 		this.conn.beginTransaction();
 	}
 
-	public get(id_user: number | string, id_note?: number | string): Promise<Array<NoteType>> {
+	public get(id_user: number | string, id_status?: number | string): Promise<Array<NoteType>> {
 		return new Promise((resolve, reject) => {
 			try {
 
@@ -28,19 +28,14 @@ export default class Note {
 					  tb_note AS tb_n
 						LEFT JOIN tb_status AS tb_s
 						  ON tb_n.fk_id_status = tb_s.id_status 
+					WHERE tb_n.id_user = ${id_user} 
 				`;
 
-				if (id_note) {
-					query += `
-						WHERE tb_n.id_note = ${id_note}
-						LIMIT 1
-					`;
-				} else {
-					query += `
-						WHERE tb_n.id_user = "${id_user}"
-						ORDER BY tb_n.created_at DESC
-					`;
+				if (id_status) {
+					query += `AND tb_n.fk_id_status = ${id_status} `;
 				}
+
+				query += `ORDER BY tb_n.created_at DESC`;
 
 				this.conn.query(query, (err, results) => {
 					if (err) {
@@ -69,7 +64,7 @@ export default class Note {
 					INSERT INTO tb_note (
 						description, id_user, fk_id_status
 					) VALUES (
-						"${description}", "${id_user}", ${id_status}
+						"${description}", ${id_user}, ${id_status}
 					)
 				`;
 

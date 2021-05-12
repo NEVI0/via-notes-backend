@@ -7,14 +7,14 @@ export default class NoteController {
 		try {
 
 			const { id_user } = request.params;
-			const { id_note } = request.query;
+			const { id_status } = request.query;
 			
 			if (!id_user) {
 				return response.status(401).json({ message: 'O ID do usuário não foi informado!' });
 			}
 
 			const noteObj: Note = new Note();
-			const notes = await noteObj.get(id_user, id_note.toString());
+			const notes = await noteObj.get(id_user, id_status.toString());
 
 			return response.status(200).json({ notes });
 
