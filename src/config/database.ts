@@ -11,11 +11,11 @@ export default class Database {
 			const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT } = process.env;
 
 			this.connection = mysql.createConnection({
-				host: DB_HOST,
-				user: DB_USER,
-				password: DB_PASSWORD,
-				database: DB_NAME,
-				port: parseInt(DB_PORT)
+				host: DB_HOST || 'localhost',
+				user: DB_USER || 'root',
+				password: DB_PASSWORD || '',
+				database: DB_NAME || 'db_via_notes',
+				port: parseInt(DB_PORT) || 3306
 			});
 
 			this.connection.connect(err => {

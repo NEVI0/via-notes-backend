@@ -28,8 +28,8 @@ export default class NoteController {
 
 			const { id_user, id_status, description } = request.body;
 
-			if (!description) {
-				return response.status(401).json({ message: 'Informe a descrição da sua nota!' });
+			if (!id_status || !description) {
+				return response.status(401).json({ message: 'Informe o status e a descrição da sua nota!' });
 			}
 
 			const noteObj: Note = new Note();
