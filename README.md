@@ -47,6 +47,8 @@ DB_USER=root
 DB_PASSWORD=123
 DB_NAME=db_via_notes
 DB_PORT=3306
+
+AUTH_SECRET=<STRING_ALEATORIA>
 ```
 
 - Substitua as informações de autenticação pelas a do seu banco de dados;
