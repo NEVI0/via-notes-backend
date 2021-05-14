@@ -20,7 +20,6 @@ export default class Note {
 					SELECT
 					  tb_n.id_note,
 					  tb_n.description,
-					  tb_n.id_user,
 					  tb_s.id_status,
 					  tb_s.name AS status,
 					  tb_n.created_at
@@ -28,7 +27,7 @@ export default class Note {
 					  tb_note AS tb_n
 						LEFT JOIN tb_status AS tb_s
 						  ON tb_n.fk_id_status = tb_s.id_status 
-					WHERE tb_n.id_user = ${id_user} 
+					WHERE tb_n.fk_id_user = ${id_user} 
 				`;
 
 				if (id_status) {
@@ -62,7 +61,7 @@ export default class Note {
 
 				const query = `
 					INSERT INTO tb_note (
-						description, id_user, fk_id_status
+						description, fk_id_user, fk_id_status
 					) VALUES (
 						"${description}", ${id_user}, ${id_status}
 					)
@@ -122,6 +121,29 @@ export default class Note {
 			try {
 
 				const query = `DELETE FROM tb_note WHERE id_note = ${id_note} LIMIT 1`;
+
+				this.conn.query(query, err => {
+					if (err) {
+						this.endConnection(false);
+						return reject({ type: 'Erro de execução de query', err });
+					}
+
+					this.endConnection(true);
+					return resolve();
+				});
+
+			} catch (err) {
+				this.endConnection(false);
+				return reject({ type: 'Error conexão com o banco de dados!', err });
+			}			
+		});
+	}
+
+	public deleteUserNotes(id_user: number | string): Promise<void> {
+		return new Promise((resolve, reject) => {
+			try {
+
+				const query = `DELETE FROM tb_note WHERE fk_id_user = ${id_user}`;
 
 				this.conn.query(query, err => {
 					if (err) {
