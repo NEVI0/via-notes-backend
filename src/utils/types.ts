@@ -6,8 +6,15 @@ export interface StatusType {
 export interface NoteType {
 	id_note: number;
 	description: string;
-	id_user: number;
 	id_status: number;
 	status: string;
+	created_at: Date;
+}
+
+export interface UserType {
+	id_user: number;
+	name: string;
+	email: string;
+	password: string;
 	created_at: Date;
 }
