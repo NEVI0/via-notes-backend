@@ -28,4 +28,12 @@ CREATE TABLE tb_note (
 );
 
 /* STATUS PADRÃO */
-INSERT INTO tb_status (`name`) VALUES ('A Fazer'), ('Importante'), ('Finalizado');
+INSERT INTO tb_status (
+	`name`, `color`
+) VALUES (
+	'A Fazer', '#ced11a'
+), (
+	'Importante', '#cf1e1e'
+), (
+	'Finalizado', '#3aa508'
+);
