@@ -100,7 +100,7 @@ export default class UserController {
 	public async delete(request: Request, response: Response) {
 		try {
 
-			const { id_user } = request.body;
+			const { id_user } = request.params;
 
 			const userObj: User = new User();
 			await userObj.delete(id_user);
