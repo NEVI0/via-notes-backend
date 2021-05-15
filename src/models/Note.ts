@@ -22,6 +22,7 @@ export default class Note {
 					  tb_n.description,
 					  tb_s.id_status,
 					  tb_s.name AS status,
+					  tb_s.color,
 					  tb_n.created_at
 					FROM
 					  tb_note AS tb_n

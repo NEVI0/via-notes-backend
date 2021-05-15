@@ -8,6 +8,7 @@ export interface NoteType {
 	description: string;
 	id_status: number;
 	status: string;
+	color: string;
 	created_at: Date;
 }
 
