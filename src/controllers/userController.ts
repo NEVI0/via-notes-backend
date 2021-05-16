@@ -7,6 +7,9 @@ import Note from '../models/Note';
 
 import 'dotenv/config';
 
+const emailRegex: RegExp = /^[a-z0-9.]+@[a-z0-9]+\.([a-z]+)?$/;
+const passwordRegex: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
 export default class UserController {
 
 	public async signin(request: Request, response: Response) {
@@ -47,6 +50,12 @@ export default class UserController {
 			if (!name || !email || !password || !conf_password) {
 				return response.status(401).json({ message: 'Preencha todos os campos!' });
 			}
+			if (!emailRegex.test(email)) {
+				return response.status(401).json({ message: 'O e-mail está invalido! Ex.: exemplo@gmail.com' });
+			}
+			if (!passwordRegex.test(password)) {
+				return response.status(401).json({ message: 'A senha deve conter no minímo 8 caracteres, com pelo menos 1 número!' });
+			}
 			if (password != conf_password) {
 				return response.status(401).json({ message: 'As senhas não são iguais!' });
 			}
@@ -71,6 +80,7 @@ export default class UserController {
 			return response.status(200).json({ id_user, name, email, token, created_at });
 
 		} catch (err) {
+			console.log(err)
 			return response.status(500).json({ message: 'Não foi possível fazer o seu cadastro no app!', err });
 		}
 	}
